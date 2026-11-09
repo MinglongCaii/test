@@ -1,0 +1,44 @@
+
+###
+
+DELETE http://localhost:3000/user/1
+role: admin
+
+
+### Register (auth)
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "name": "Bob",
+  "email": "bob@example.com",
+  "password": "secret123"
+}
+### Register (auth)
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "name": "Long",
+  "email": "long@example.com",
+  "password": "long123"
+}
+### Login (auth)
+# @name login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "bob@example.com",
+  "password": "secret123"
+}
+
+###
+PUT http://localhost:3000/user
+Authorization: Bearer {{login.response.body.data.access_token}}
+Content-Type: application/json
+
+{
+  "name": "Bob10",
+  "email": "bob1@example.com"
+}
